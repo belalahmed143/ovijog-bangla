@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container my-2">
+    {% for p in postss %}
+    <h5 style="background-color: green;color: white; padding: 5px; text-align: center;">{{p.newsname}}</h5><hr>
+    {% endfor %}
+    <div class="row">
+        {% for p in posts %}
+        <div class="col-10 col-md-6 col-lg-4 my-2 mx-auto">
+            <div class="card mx-auto border-0">
+               <a href=" {% url 'news-details' p.id %} "><img class="card-img-top" src="{{p.image.url}}" alt=""></a>
+                <a href="">  </a>
+                <div class="card-body">
+                <a style="color: black;" href=" {% url 'news-details' p.id %} "><h6 class="card-title">{{ p.title }}</h6></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

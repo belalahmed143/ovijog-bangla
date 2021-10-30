@@ -1,0 +1,20 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg  bg-light shadow sticky-top">
+    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'image/bangla.png' %}" width="250px" alt=""></a>
+    <button class="navbar-toggler d-lg-none navbar-light" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+
+      <ul class="navbar-nav ml-auto">
+        {% for p in news_categorise %}
+        {% if forloop.counter <= 11 %}
+          <li class="nav-item active">
+          <a class="nav-link" href="{% url 'news' name=p.name %}"> <b>{{ p.name }}</b>  <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>     

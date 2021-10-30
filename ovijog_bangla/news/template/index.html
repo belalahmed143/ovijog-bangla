@@ -1,0 +1,329 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- sorbo ses -->
+<div class="container">
+   
+    <h5 style="background-color: red; color:white; text-align: center; width: 100px;">সর্বশেষ</h5>
+    
+    <marquee behavior="" direction="">
+        
+        {% for cate in news_categorise %}
+        {% if cate.name == 'সর্বশেষ' %}
+        {% for p in cate.news_set.all %}
+        {% if forloop.counter <= 4 %}
+        <a style="color:red; font-size: larger;" class="p-4 " href="{% url 'news-details' p.id %}"><b>{{p.title}}</b></a>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}      
+    </marquee>
+    <hr>
+</div>
+
+<!-- sorboses end -->
+
+<!-- শীর্ষ খবর start -->
+<div class="container">
+<div class="row">
+    <div class="col-12 col-md-8 my-2">
+        <div class="">
+            <h5>শীর্ষ খবর </h5><hr style='border-top: 2px dashed black;'>
+        </div>
+        <hr>
+        <div class="row">
+            
+            {% for cate in news_categorise %}
+            {% if cate.name == 'শীর্ষ খবর' %}   
+            {% for p in cate.news_set.all %}
+            {% if forloop.counter <= 2 %}
+            <div class="col-10 col-md-6 col-lg-6 my-2 mx-auto">
+                <div class="card mx-auto border-0">
+                    <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                    <div class="card-body">
+                        <a style="color: black;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{ p.title }}</h6></a>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+<div class="col-12 col-md-4 my-2 ">
+    <h5>খেলাধুলা</h5> <hr style='border-top: 2px dashed black;'>
+    <div class="row">
+        <div class="col-12 col-md-12 mx-auto">
+            <div class="content-section">
+                  <ul class="list-group mx-auto ">
+                    {% for cate in news_categorise %}
+                    {% if cate.name == 'খেলাধুলা' %}
+                    {% for p in cate.news_set.all %}                  
+                    {% if forloop.counter <= 2  %}                      
+                    <div class="card mb-3 border-0">
+                            <div class="row g-0">
+                              <div class="col-md-6">
+                                <a href="{% url 'news-details' p.id %}"><img src="{{ p.image.url }}" class="img-fluid rounded-start" alt="..."></a>
+                              </div>
+                              <div class="col-md-6 my-2">
+                                <div class="card-text" >
+                                  <a style="color: black" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
+                                </div>
+                              </div>                            
+                            </div>
+                          </div>
+                          <hr>
+                     {% endif %}                     
+                     {% endfor%}
+                     {% endif %}
+                     {% endfor %}
+                  </ul>
+              </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- শীর্ষ খবর end -->
+
+    <!-- জাতীয় খবর start -->
+    <div class="container my-2">
+        <div class="title">
+            <h5>জাতীয়</h5><hr style='border-top: 2px dashed black;'>
+        </div>
+                <div class="row">
+                    {% for cate in news_categorise %}
+                    {% if cate.name == 'জাতীয়' %}
+                    {% for p in cate.news_set.all %}
+                    {% if forloop.counter <= 6 %}
+                    <div class="col-10 col-md-6 col-lg-4 my-2 mx-auto ">
+                        <div class="card mx-auto border-0">
+                           <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                            <div class="card-body">
+                                <a style="color: black;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{p.title}}</h6></a>
+                                <p>{{p.date}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+<!-- জাতীয় end -->
+
+<!-- আন্তর্জাতিক খবর start -->
+<div class="container my-2">
+    <div class="title">
+        <h5>আন্তর্জাতিক</h5><hr style='border-top: 2px dashed black;'>
+    </div>
+    <div class="row">
+            {% for cate in news_categorise %}
+            {% if cate.name == 'আন্তর্জাতিক' %}
+            {% for p in cate.news_set.all %}
+            {% if forloop.counter <= 3 %}
+        <div class="col-12 col-md-6 col-lg-4 my-2 mx-auto">
+            <div class="card mx-auto border-0">
+                <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                <div class="card-body">
+                        <a style="color: black;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{p.title}}</h6></a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<!-- আন্তর্জাতিক end -->
+
+<!-- খেলাধুলা খবর start -->
+<div class="container my-2">
+    <div class="row">
+        <div class="col-12 col-md-8 mx-auto my-2">
+            <div class="title">
+                <h5>খেলাধুলা</h5><hr style='border-top: 2px dashed black;'>
+            </div>
+            <div class="row">
+                {% for cate in news_categorise %}
+                {% if cate.name == 'খেলাধুলা' %}
+                {% for p in cate.news_set.all %}
+                {% if forloop.counter <= 2 %}
+                <div class="col-12 col-md-6 col-lg-6 my-2 mx-auto">
+                    <div class="card mx-auto border-0">
+                        <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                        <div class="card-body">
+                            <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+<!-- খেলাধুলা খবর end -->
+
+<!-- sorbo ses start -->
+        <div class="col-12 col-md-4 my-2">
+            <h5>সর্বশেষ</h5> <hr style='border-top: 2px dashed black;'>
+            <div class="row">
+                <div class="col-12 col-md-12 mx-auto">
+                    <div class="content-section">
+                          <ul class="list-group mx-auto ">
+                            {% for cate in news_categorise %}
+                            {% if cate.name == 'সর্বশেষ' %}
+                            {% for p in cate.news_set.all %}                           
+                            {% if forloop.counter <= 2  %}                      
+                            <div class="card mb-3 border-0">
+                                    <div class="row g-0">
+                                      <div class="col-md-6">
+                                        <a href="{% url 'news-details' p.id %}"><img src="{{ p.image.url }}" class="img-fluid rounded-start" alt="..."></a>
+                                      </div>
+                                      <div class="col-md-6 my-2">
+                                        <div class="card-text" >
+                                          <a style="color: black" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
+                                        </div>
+                                      </div>                            
+                                    </div>
+                                  </div>
+                                  <hr>
+                             {% endif %}                     
+                             {% endfor%}
+                             {% endif %}
+                             {% endfor %}
+                          </ul>
+                        </p>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- sorbo ses end -->
+
+
+<!--start -->
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-4 col-lg-3 my-2">
+            <h5 style="text-align: center; padding: 5px;">শিক্ষা</h5><hr style='border-top: 2px dashed black;'>
+            <div class="row">
+                <div class="col-12 col-md-12 mx-auto">
+                    {% for cate in news_categorise %}
+                    {% if cate.name == 'শিক্ষা' %}
+                    {% for p in cate.news_set.all %}
+                    {% if forloop.counter <= 2 %}
+                        <div class="card mx-auto my-2 border-0">
+                            <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                            <div class="card-body">
+                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 my-2">
+            <h5 style="text-align: center; padding: 5px;">স্বাস্থ্য</h5><hr style='border-top: 2px dashed black;'>
+            <div class="row">
+                <div class="col-7 col-md-12 mx-auto">
+                        {% for cate in news_categorise %}
+                        {% if cate.name == 'স্বাস্থ্য' %}
+                        {% for p in cate.news_set.all %}
+                        {% if forloop.counter <= 2 %}
+                        <div class="card mx-auto my-2 border-0">
+                            <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                            <div class="card-body">
+                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 my-2">
+            <h5 style="text-align: center; padding: 5px;">অর্থনীতি</h5><hr style='border-top: 2px dashed black;'>
+            <div class="row">
+                <div class="col-7 col-md-12 mx-auto">
+                        {% for cate in news_categorise %}
+                        {% if cate.name == 'অর্থনীতি' %}
+                        {% for p in cate.news_set.all %}
+                        {% if forloop.counter <= 2 %}
+                        <div class="card mx-auto my-2 border-0">
+                            <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                            <div class="card-body">
+                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 col-lg-3 my-2">
+            <h5 style="text-align: center; padding: 5px;">কৃষি</h5><hr style='border-top: 2px dashed black;'>
+            <div class="row">
+                <div class="col-7 col-md-12 mx-auto ">
+                        {% for cate in news_categorise %}
+                        {% if cate.name == 'কৃষি' %}
+                        {% for p in cate.news_set.all %}
+                        {% if forloop.counter <= 2 %}
+                        <div class="card mx-auto my-2 border-0">
+                            <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                            <div class="card-body">
+                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+
+
+<!-- ইসলামি চিন্তা start -->
+<div class="container">
+    <div class="T_name">
+        <h5>ইসলামি চিন্তা</h5><hr style='border-top: 2px dashed black;'>
+    </div>
+    <div class="row">
+        {% for cate in news_categorise %}
+        {% if cate.name == 'ইসলামি চিন্তা' %}
+        {% for p in cate.news_set.all %}
+        {% if forloop.counter <= 4 %}
+        <div class="col-12 col-md-6 col-lg-3 my-2 mx-auto">
+            <div class="card mx-auto border-0">
+                <a style="color: black;" href="{% url 'news-details' p.id%}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
+                <div class="card-body">
+                    <a style="color: black;" href="{% url 'news-details' p.id%}"><h6 class="card-title">{{ p.title }}</h6></a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<!-- ইসলামি চিন্তা start -->
+
+{% endblock content %}
