@@ -1,0 +1,1 @@
+web: gunicorn ovijog_bangla.wsgi --log-file -
