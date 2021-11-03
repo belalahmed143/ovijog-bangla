@@ -1,20 +1,20 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg  bg-light shadow sticky-top">
-    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'image/bangla.png' %}" width="250px" alt=""></a>
-    <button class="navbar-toggler d-lg-none navbar-light" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-        aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-
-      <ul class="navbar-nav ml-auto">
-        {% for p in news_categorise %}
-        {% if forloop.counter <= 11 %}
-          <li class="nav-item active">
-          <a class="nav-link" href="{% url 'news' name=p.name %}"> <b>{{ p.name }}</b>  <span class="sr-only">(current)</span></a>
-        </li>
-        {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-  </nav>     
+  <nav class="navbar navbar-expand-lg bg-light shadow sticky-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'image/bangla.png' %}" width="250px" alt=""></a>
+        <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            {% for p in news_categorise %}
+            {% if forloop.counter <= 11 %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'news' name=p.name %}">{{ p.name }}</a>
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </nav>

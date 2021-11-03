@@ -12,7 +12,7 @@
         {% if cate.name == 'সর্বশেষ' %}
         {% for p in cate.news_set.all %}
         {% if forloop.counter <= 4 %}
-        <a style="color:red; font-size: larger;" class="p-4 " href="{% url 'news-details' p.id %}"><b>{{p.title}}</b></a>
+        <a style="color:red; font-size: larger; text-decoration:none" class="p-4 " href="{% url 'news-details' p.id %}"><b>{{p.title}}</b></a>
         {% endif %}
         {% endfor %}
         {% endif %}
@@ -41,10 +41,11 @@
                 <div class="card mx-auto border-0">
                     <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                     <div class="card-body">
-                        <a style="color: black;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{ p.title }}</h6></a>
+                        <a style="color: black; text-decoration:none; " href="{% url 'news-details' p.id %}"><h6 class="card-title">{{ p.title }}</h6></a>
                     </div>
                 </div>
             </div>
+            
             {% endif %}
             {% endfor %}
             {% endif %}
@@ -68,8 +69,8 @@
                                 <a href="{% url 'news-details' p.id %}"><img src="{{ p.image.url }}" class="img-fluid rounded-start" alt="..."></a>
                               </div>
                               <div class="col-md-6 my-2">
-                                <div class="card-text" >
-                                  <a style="color: black" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
+                                <div class="card-text text-center" >
+                                  <a style="color: black; text-decoration:none;" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
                                 </div>
                               </div>                            
                             </div>
@@ -102,7 +103,7 @@
                         <div class="card mx-auto border-0">
                            <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                             <div class="card-body">
-                                <a style="color: black;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{p.title}}</h6></a>
+                                <a style="color: black;text-decoration:none;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{p.title}}</h6></a>
                                 <p>{{p.date}}</p>
                             </div>
                         </div>
@@ -129,7 +130,7 @@
             <div class="card mx-auto border-0">
                 <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                 <div class="card-body">
-                        <a style="color: black;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{p.title}}</h6></a>
+                        <a style="color: black;text-decoration:none;" href="{% url 'news-details' p.id %}"><h6 class="card-title">{{p.title}}</h6></a>
                 </div>
             </div>
         </div>
@@ -157,7 +158,7 @@
                     <div class="card mx-auto border-0">
                         <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                         <div class="card-body">
-                            <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                            <a style="color: black; text-decoration:none;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
                         </div>
                     </div>
                 </div>
@@ -186,8 +187,8 @@
                                         <a href="{% url 'news-details' p.id %}"><img src="{{ p.image.url }}" class="img-fluid rounded-start" alt="..."></a>
                                       </div>
                                       <div class="col-md-6 my-2">
-                                        <div class="card-text" >
-                                          <a style="color: black" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
+                                        <div class="card-text text-center" >
+                                          <a style="color: black; text-decoration:none;" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
                                         </div>
                                       </div>                            
                                     </div>
@@ -222,7 +223,7 @@
                         <div class="card mx-auto my-2 border-0">
                             <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                             <div class="card-body">
-                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                                <a style="color: black; text-decoration:none;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
                             </div>
                         </div>
                     {% endif %}
@@ -243,7 +244,7 @@
                         <div class="card mx-auto my-2 border-0">
                             <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                             <div class="card-body">
-                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                                <a style="color: black; text-decoration:none;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
                             </div>
                         </div>
                         {% endif %}
@@ -264,7 +265,7 @@
                         <div class="card mx-auto my-2 border-0">
                             <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                             <div class="card-body">
-                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                                <a style="color: black; text-decoration:none;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
                             </div>
                         </div>
                         {% endif %}
@@ -285,7 +286,7 @@
                         <div class="card mx-auto my-2 border-0">
                             <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                             <div class="card-body">
-                                <a style="color: black;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
+                                <a style="color: black; text-decoration:none;" href=""><h6 class="card-title"> {{ p.title }}</h6></a>
                             </div>
                         </div>
                         {% endif %}
@@ -314,7 +315,7 @@
             <div class="card mx-auto border-0">
                 <a style="color: black;" href="{% url 'news-details' p.id%}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                 <div class="card-body">
-                    <a style="color: black;" href="{% url 'news-details' p.id%}"><h6 class="card-title">{{ p.title }}</h6></a>
+                    <a style="color: black; text-decoration:none;" href="{% url 'news-details' p.id%}"><h6 class="card-title">{{ p.title }}</h6></a>
                 </div>
             </div>
         </div>

@@ -2,34 +2,36 @@
 
 {% block content %}
 
-<div class="container my-2">
+<div class="container my-3">
 <div class="row">
-        <div class="col-12 col-md-8 lg-8">
+        <div class="col-12 col-md-8 col-lg-8">
             <div class="row">
                 <p>Total View : {{newsdetails.news_view_count}}</p>
                     <div class="card ">
                         <img class="card-img-top" src="{{newsdetails.image.url}}" alt="">
                         <div class="card-body">
                             <h4 class="card-title">{{ newsdetails.title }}</h4>
-                            <p style="line-height: 2.6">{{newsdetails.description}}</p>
+                            <p style="line-height: 2.6; text-decoration:none;">{{newsdetails.description}}</p>
                         </div>
                     </div>
             </div>
         </div>
 
+
         <div class="col-12 col-md-4 col-lg-4">
             <div class="content-section">
                 <ul class="list-group mx-auto ">
+                    <h4 class="my-3">More News</h4><hr>
                   {% for p in news %}                  
-                  {% if forloop.counter <= 6  %}                      
-                  <div class="card border-0">
+                  {% if forloop.counter <= 8  %}                      
+                  <div class="card border-0 px-2">
                           <div class="row g-0">
                             <div class="col-md-6">
                               <a href="{% url 'news-details' p.id %}"><img src="{{ p.image.url }}" class="img-fluid rounded-start" alt="..."></a>
                             </div>
                             <div class="col-md-6 my-2">
-                              <div class="card-text" >
-                                <a style="color: black" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
+                              <div class="card-text text-center" >
+                                <a style="color: black; text-decoration:none;" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
                               </div>
                             </div>                            
                           </div>

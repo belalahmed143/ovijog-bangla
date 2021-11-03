@@ -22,12 +22,16 @@ def news(request, name):
 
 
 def NewsDetails(request,pk):
+    news =News.objects.all().order_by('-id')
+    news_categorise = NewsCategory.objects.all()
+
     newsdetails = News.objects.get(pk=pk)
     newsdetails.news_view_count = newsdetails.news_view_count + 1
     newsdetails.save()
     context={
         'newsdetails':newsdetails,
-        'news':news
+        'news':news,
+        'news_categorise':news_categorise
     }
 
     return render(request, 'news_detail.html',context)
