@@ -15,10 +15,11 @@ def index(request):
     return render(request, 'index.html',context)
 
 def news(request, name):
+    news_categorise = NewsCategory.objects.all()
     news_cate = get_object_or_404(NewsCategory,name=name)
     posts =News.objects.filter(news_category=news_cate.id).order_by('-date')
 
-    return render(request,'news_category.html', {'posts':posts, 'news_cate':news_cate})
+    return render(request,'news_category.html', {'posts':posts, 'news_cate':news_cate, 'news_categorise':news_categorise})
 
 
 def NewsDetails(request,pk):
