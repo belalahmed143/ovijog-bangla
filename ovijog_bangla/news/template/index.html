@@ -37,7 +37,7 @@
             {% if cate.name == 'শীর্ষ খবর' %}   
             {% for p in cate.news_set.all %}
             {% if forloop.counter <= 2 %}
-            <div class="col-10 col-md-6 col-lg-6 my-2 mx-auto">
+            <div class="col-12 col-md-6 col-lg-6 my-2 mx-auto">
                 <div class="card mx-auto border-0">
                     <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                     <div class="card-body">
@@ -99,7 +99,7 @@
                     {% if cate.name == 'জাতীয়' %}
                     {% for p in cate.news_set.all %}
                     {% if forloop.counter <= 6 %}
-                    <div class="col-10 col-md-6 col-lg-4 my-2 mx-auto ">
+                    <div class="col-12 col-md-6 col-lg-4 my-2 mx-auto ">
                         <div class="card mx-auto border-0">
                            <a href="{% url 'news-details' p.id %}"><img class="card-img-top" src="{{ p.image.url }}" alt=""></a>
                             <div class="card-body">
@@ -236,7 +236,7 @@
         <div class="col-12 col-md-4 col-lg-3 my-2">
             <h5 style="text-align: center; padding: 5px;">স্বাস্থ্য</h5><hr style='border-top: 2px dashed black;'>
             <div class="row">
-                <div class="col-7 col-md-12 mx-auto">
+                <div class="col-12 col-md-12 mx-auto">
                         {% for cate in news_categorise %}
                         {% if cate.name == 'স্বাস্থ্য' %}
                         {% for p in cate.news_set.all %}
@@ -257,7 +257,7 @@
         <div class="col-12 col-md-4 col-lg-3 my-2">
             <h5 style="text-align: center; padding: 5px;">অর্থনীতি</h5><hr style='border-top: 2px dashed black;'>
             <div class="row">
-                <div class="col-7 col-md-12 mx-auto">
+                <div class="col-12 col-md-12 mx-auto">
                         {% for cate in news_categorise %}
                         {% if cate.name == 'অর্থনীতি' %}
                         {% for p in cate.news_set.all %}
@@ -278,7 +278,7 @@
         <div class="col-12 col-md-4 col-lg-3 my-2">
             <h5 style="text-align: center; padding: 5px;">কৃষি</h5><hr style='border-top: 2px dashed black;'>
             <div class="row">
-                <div class="col-7 col-md-12 mx-auto ">
+                <div class="col-12 col-md-12 mx-auto ">
                         {% for cate in news_categorise %}
                         {% if cate.name == 'কৃষি' %}
                         {% for p in cate.news_set.all %}
