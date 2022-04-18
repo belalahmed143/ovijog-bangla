@@ -3,47 +3,100 @@
 {% block content %}
 
 <div class="container my-3">
-<div class="row">
+  <div class="row">
         <div class="col-12 col-md-8 col-lg-8">
-            <div class="row">
-                <p>Total View : {{newsdetails.news_view_count}}</p>
-                    <div class="card ">
+            <div class="row">           
+                    <div class="card border-0">
                         <img class="card-img-top" src="{{newsdetails.image.url}}" alt="">
                         <div class="card-body">
+                          <p>Total View : {{newsdetails.news_view_count}}</p>
                             <h4 class="card-title">{{ newsdetails.title }}</h4>
                             <p style="line-height: 2.6; text-decoration:none;">{{newsdetails.description}}</p>
                         </div>
                     </div>
             </div>
+
+            <!-- related_news start-->
+            <div class="row">
+              {% for p in related_news %}
+              {% if forloop.counter <= 1 %}
+              <h4 class="my-4">{{ p.news_category.name }} এর সর্বশেষ</h4><hr>
+              {% endif %}
+              {% endfor %}
+              {% for p in related_news %}
+              <div class="col-6 col-md-4">                  
+                  <div class="card mx-auto border-0 p-0">
+                      <a href=" {% url 'news-details' p.id %} "><img class="card-img-top" src="{{p.image.url}}" alt=""></a>
+                       <div class="card-body p-0">
+                       <a style="color: black;" href=" {% url 'news-details' p.id %} "><p class="card-title">{{ p.title }}</p></a>
+                       </div>
+                   </div>
+              </div>
+              {% endfor %}
+          </div>
+            <!-- related_news end-->
         </div>
 
 
-        <div class="col-12 col-md-4 col-lg-4">
+      <div class="col-12 col-md-4 col-lg-4">
+          <!-- ads start -->
+            
+            {% for a in ads %}
+          <div class="card">
+              <img src="{{ a.image.url }}" alt="">
+          </div>
+            {% endfor %}
+          <!-- ads end -->
+          
+          <!-- More news start -->
+          <h4 class="my-4">আরো খবর</h4><hr>
+          <div class='topnews' style="width:100%;height:500px;overflow:scroll;">
             <div class="content-section">
-                <ul class="list-group mx-auto ">
-                    <h4 class="my-3">More News</h4><hr>
-                  {% for p in news %}                  
-                  {% if forloop.counter <= 8  %}                      
+              <ul class="list-group mx-auto ">
+                {% for p in new_news %}                  
+                {% if forloop.counter <= 8  %}                      
                   <div class="card border-0 px-2">
-                          <div class="row g-0">
-                            <div class="col-md-6">
-                              <a href="{% url 'news-details' p.id %}"><img src="{{ p.image.url }}" class="img-fluid rounded-start" alt="..."></a>
-                            </div>
-                            <div class="col-md-6 my-2">
-                              <div class="card-text text-center" >
-                                <a style="color: black; text-decoration:none;" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
-                              </div>
-                            </div>                            
+                        <div class="row g-0">
+                          <div class="col-md-6">
+                            <a href="{% url 'news-details' p.id %}"><img src="{{ p.image.url }}" class="img-fluid rounded-start" alt="..."></a>
                           </div>
+                          <div class="col-md-6 my-2">
+                            <div class="card-text text-center" >
+                              <a style="color: black; text-decoration:none;" href="{% url 'news-details' p.id %}"><p class="card-title">{{ p.title }}</p></a>
+                            </div>
+                          </div>                            
                         </div>
-                        <hr>
-                   {% endif %}                     
-                   {% endfor%}
-                </ul>
+                    </div>
+                {% endif %}                     
+                {% endfor%}
+              </ul>
             </div>
-        </div>
-    </div>
+          </div>
+          <!-- More news end -->
+
+          <!-- Ads start -->
+            {% for a in ads2 %}
+          <div class="card">
+              <img src="{{ a.image.url }}" alt="">
+          </div>
+            {% endfor %}
+          <!-- ads end -->
+              <!-- সর্বাধিক পঠিত  -->
+              <h4 class="pt-4">সর্বাধিক পঠিত </h4>
+              <hr>
+              <div class='topnews' style="width:100%;height:400px;overflow:scroll;">
+                  {% for p in top_view_news %}
+                  <div class="card-body p-0 m-0">
+                      <a href="{% url 'news-details' p.id %} "><p class="cat-p">{{ p.title }}</p></a>
+                  </div>
+                  <hr>
+                  {% endfor %}
+              </div>
+              <!-- সর্বাধিক পঠিত end -->
+      </div>
+  </div>
 </div>
+
 
 
 
